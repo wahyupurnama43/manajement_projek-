@@ -1,0 +1,192 @@
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+#sidebar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    outline: none;
+    height: 100vh;
+    z-index: 999;
+    background: #ffff;    
+    color: #fff;
+    transition: all 0.3s;
+    overflow-y: scroll;
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
+}
+
+#sidebar.active {
+    left: 0;
+}
+
+#dismiss {
+  outline: none;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    border-radius: 50%;
+    color: var(--blue);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+#dismiss i{
+  padding:.5rem;
+}
+#dismiss:hover {
+    background: rgba(0,0,0,.1);
+}
+
+/*.overlay {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 998;
+    opacity: 0;
+    outline: none;
+    transition: all 0.5s ease-in-out;
+}*/
+.overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #fff;
+    color: #333;
+    text-align:center;
+    outline: none !important;
+}
+
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+
+#sidebar ul li a:hover {
+    color: #fff;
+    background: #fff;
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+    color: rgba(0,0,0,.5);
+    background: #fff;
+    padding-left: 1rem;
+
+}
+#sidebar ul li.active>a:hover,
+a[aria-expanded="true"] {
+    color: rgba(0,0,0,.8);
+    background: rgba(0,0,0,.1);
+    border-radius: 0 2rem 2rem 0;
+
+}
+
+#sidebar ul li.active>a.home,
+a[aria-expanded="true"] {
+    background-color: rgba(26,115,232,0.122);
+    border-radius: 0 2rem 2rem 0;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #333;
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+a.download {
+    background: #fff;
+    color: #7386D5;
+}
+
+a.article,
+a.article:hover {
+   background: #ffff; !important;
+    color: #fff !important;
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+#sidebar ul li {
+  padding-right: .6rem;
+}
+.sidebar-header h3 span:nth-child(1){
+  color: var(--blue);
+}
+.sidebar-header h3 span:nth-child(2){
+  color: var(--red);
+}
+.sidebar-header h3 span:nth-child(3){
+  color: var(--yellow);
+}
+.sidebar-header h3 span:nth-child(4){
+  color: var(--blue);
+}
+.sidebar-header h3 span:nth-child(5){
+  color: var(--green);
+}
+.sidebar-header h3 span:nth-child(6){
+  color: var(--red);
+}
+
+.t-scale button{
+  transition: .5s;
+  border-radius: 40px;
+}
+
+.t-scale button:hover,table tr td button:hover, .card-body .py-2 button:hover{
+  transform: scale(1.08);
+}
