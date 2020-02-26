@@ -54,11 +54,11 @@
                                         </button></a>
                                     </div>
                                     <div class="t-scale pr-1">
-                                    <a href="<?= BASEURL?>/projek/member/<?= $td['id_projek'] ?>/<?= $td['id_jenis'] ?>"><button class="btn btn-dark"><i class="fas fa-user"></i> &nbsp;Member</button> </a>
+                                    <a href="<?= BASEURL?>/leader/member/<?= $td['id_projek'] ?>/<?= $td['id_jenis'] ?>" ><button class="btn btn-dark"><i class="fas fa-user"></i> &nbsp;Member</button> </a>
                                 </div>
                                     <div class="t-scale">
-                                     <a href="<?= BASEURL?>/Proses_projek/projek_selesai/<?= $td['id_projek'] ?>" class="tombol-end">
-                                        <button class="btn btn-success "><i class="fas fa-check"></i> &nbsp;End </button></a>
+                                     <a href="<?= BASEURL?>/proses_projek/projek_selesaiL/<?= $td['id_projek'] ?>" class="tombol-end">
+                                        <button class="btn btn-success"><i class="fas fa-check"></i> &nbsp;End </button></a>
                                  </div> 
                                 </td>
                             </tr>
@@ -84,7 +84,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?= BASEURL ?>/proses_projek/addProjek" method="POST">
+                <form action="<?= BASEURL ?>/proses_projek/addProjekL" method="POST">
                     <div class="form-group">
                         <label for="projek">Projek</label>
                         <select name="projek" id="" class="form-control">

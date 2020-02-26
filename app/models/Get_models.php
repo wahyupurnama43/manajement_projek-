@@ -12,9 +12,26 @@ class Get_models
 
   public function ambilDetail()
   {
-    $query = "SELECT * FROM tb_projek 
-              INNER JOIN auth ON tb_projek.id_auth = auth.id_auth
-              INNER JOIN jenis_projek ON tb_projek.id_jenis = jenis_projek.id_jenis WHERE tanggal_akhir = 0000-00-00 ";
+    $group = $_SESSION['role'];
+    $id_auth = $_SESSION['auth'];
+    if($group=='3')
+    {
+      $query = "SELECT * FROM tb_projek 
+                INNER JOIN auth ON tb_projek.id_auth = auth.id_auth
+                INNER JOIN jenis_projek ON tb_projek.id_jenis = jenis_projek.id_jenis WHERE tanggal_akhir = '0000-00-00' ";
+    }
+    else if($group=='2')
+    {
+      $query = "SELECT * FROM tb_projek 
+                INNER JOIN auth ON tb_projek.id_auth = auth.id_auth
+                INNER JOIN jenis_projek ON tb_projek.id_jenis = jenis_projek.id_jenis WHERE tanggal_akhir = '0000-00-00' AND tb_projek.id_auth = $id_auth";
+    }
+    else if($group=='1')
+    {
+      $query = "SELECT * FROM tb_projek 
+                INNER JOIN auth ON tb_projek.id_auth = auth.id_auth
+                INNER JOIN jenis_projek ON tb_projek.id_jenis = jenis_projek.id_jenis WHERE tanggal_akhir = '0000-00-00' ";
+    }
     $this->db->query($query);
     return $this->db->resultSet(); 
   }

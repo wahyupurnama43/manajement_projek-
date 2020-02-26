@@ -17,6 +17,19 @@ class Proses_projek extends Controller
     	}
     }
 
+     public function addProjekL() //untuk menu leader
+    {
+        if ($this->model('Projek_models')->addProjek($_POST) > 0){
+            Flasher::setFlash('berhasil', 'di Tambah','success');
+            header('Location: '. BASEURL . '/leader/projek');
+            exit();
+        }else {
+            Flasher::setFlash('Gagal','di Tambah','danger');
+            header('Location: '. BASEURL . '/leader/projek');
+            exit();
+        }
+    }
+
     public function updateProjek()
     {
     	if ($this->model('Projek_models')->updateProjek($_POST) > 0){
@@ -25,7 +38,7 @@ class Proses_projek extends Controller
     		exit();
     	}else {
     		Flasher::setFlash('Gagal','di Ubah','danger');
-    		header('Location: '. BASEURL . '/ubah_projek');
+    		header('Location: '. BASEURL . '/projek/ubah_projek');
     		exit();
     	}
     }
@@ -108,17 +121,32 @@ class Proses_projek extends Controller
     	}
     }
 
+
     public function addMember()
-    {
-    	if ( $this->model('Projek_models')->addMember($_POST) > 0 ) {
+    { 
+        
+        if ( $this->model('Projek_models')->addMember($_POST) > 0 ) {
     		Flasher::setFlash('Berhasil', 'Di Ditambah', 'success');
-    		header('Location: '.BASEURL. '/projek/index');
+            header('Location: '.BASEURL. '/projek/member/$id_projek/$id_jenis');
     		exit();
     	}else{
     		Flasher::setFlash('Gagal', 'Di Ditambah', 'danger');
-    		header('Location: '.BASEURL. '/projek/index');
+    		header('Location: '.BASEURL. '/projek/member');
     		exit();
     	}
+    }
+
+     public function addMemberL()
+    {
+        if ( $this->model('Projek_models')->addMember($_POST) > 0 ) {
+            Flasher::setFlash('Berhasil', 'Di Ditambah', 'success');
+            header('Location: '.BASEURL. '/leader/projek');
+            exit();
+        }else{
+            Flasher::setFlash('Gagal', 'Di Ditambah', 'danger');
+            header('Location: '.BASEURL. '/leader/projek');
+            exit();
+        }
     }
 
     public function hapus_MP($id)
@@ -134,18 +162,45 @@ class Proses_projek extends Controller
     	}
     }
 
-    public function index($id)
+    public function hapus_Le($id)
     {
-    	if ( $this->model('Projek_models')->selesai($id) > 0 ) {
-    		Flasher::setFlash('Berhasil', 'Di selesaikan', 'success');
-    		header('Location: '.BASEURL. '/projek/list');
-    		exit();
-    	}else{
-    		Flasher::setFlash('Gagal', 'Di selesaikan', 'danger');
-    		header('Location: '.BASEURL. '/projek/list');
-    		exit();
-    	}
+        if ( $this->model('Projek_models')->hapus_MP($id) > 0 ) {
+            Flasher::setFlash('Berhasil', 'Di hapus', 'success');
+            header('Location: '.BASEURL. '/leader/projek');
+            exit();
+        }else{
+            Flasher::setFlash('Gagal', 'Di hapus', 'danger');
+            header('Location: '.BASEURL. '/leader/projek');
+            exit();
+        }
     }
+
+    public function projek_selesai($id)
+    {
+        if ( $this->model('Projek_models')->projek_selesai($id) > 0 ) {
+            Flasher::setFlash('Berhasil', 'Di hapus', 'success');
+            header('Location: '.BASEURL. '/projek/list');
+            exit();
+        }else{
+            Flasher::setFlash('Gagal', 'Di hapus', 'danger');
+            header('Location: '.BASEURL. '/projek/list');
+            exit();
+        }
+    }
+
+    public function projek_selesaiL($id) //untuk menu leader
+    {
+        if ( $this->model('Projek_models')->projek_selesai($id) > 0 ) {
+            Flasher::setFlash('Berhasil', 'Di hapus', 'success');
+            header('Location: '.BASEURL. '/leader');
+            exit();
+        }else{
+            Flasher::setFlash('Gagal', 'Di hapus', 'danger');
+            header('Location: '.BASEURL. '/leader');
+            exit();
+        }
+    }
+
 
     public function hapus_projek($id)
     {
@@ -172,12 +227,6 @@ class Proses_projek extends Controller
             exit();
         }
     }
-
-    public function getmember()
-    {
-        echo json_encode($this->model('Get_models')->getmember($_POST['id']));
-    }
-    
 
 
 }

@@ -27,22 +27,22 @@
                         <?php foreach ($data['TD'] as $mp): ?>
                             <tr>
                                 <td><?= $i++ ?></td>
-                                <td>
+                                <td width="20%">
                                     <?= $mp['nama'] ?>
                                 </td>
                                 <td>
                                     <?= $mp['jenis_projek'] ?>
                                 </td>
-                                <td>
+                                <td width="15%">
                                     <?= $mp['tugas'] ?>
                                 </td>
-                                <td>
+                                <td width="15%">
                                     <?= $mp['tanggal_awal'] ?>
                                 </td>
-                                  <td>
+                                  <td width="15%">
                                     <?= $mp['tanggal_akhir'] ?>
                                 </td>
-                                <td width="30%" class="t-scale">
+                                <td width="25%" class="t-scale">
                                     <a class=" tombol-hapus" href="<?= BASEURL ?>/Proses_projek/hapus_projek/<?= $mp['id_projek'] ?>">
                                         <button class="btn btn-danger"><i class="fas fa-trash-alt"></i>&nbsp;Hapus
                                         </button></a>

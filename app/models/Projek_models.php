@@ -44,7 +44,7 @@ class Projek_models
       $this->db->query($query);
       $this->db->bind('nama', $data['nama']);
       $this->db->bind('username', $data['username']);
-      $this->db->bind('password', md5($password) );
+      $this->db->bind('password', password_hash($password, PASSWORD_DEFAULT) );
       $this->db->bind('id_level', $data['id_level']);
 
       $this->db->execute();
@@ -100,6 +100,7 @@ class Projek_models
 
     public function addMember($data)
     {
+      
       date_default_timezone_set('Asia/Kuala_Lumpur');
       $date = date('Y-m-d H:i:s');
       $query = "INSERT INTO tb_detail VALUES ('',:id_auth ,:id_projek, :id_jenis, '$date')";
@@ -123,7 +124,7 @@ class Projek_models
       $this->db->rowCount();
     }
 
-    public function selesai($id)
+    public function projek_selesai($id)
     {
       date_default_timezone_set('Asia/Kuala_Lumpur');
       $date = date('Y-m-d H:i:s');

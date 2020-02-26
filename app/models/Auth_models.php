@@ -26,18 +26,21 @@ class Auth_models
    	public function login($data)
     {
    		 $username = $data['username'];
-         $password =  md5($data['password']);
+         $password = $data['password'];
+ 
 
           if ( isset($username) && $username !== '') {
             if ($datauser = $this->getUserBy("username", $username)) {
                 $password_user = $datauser["password"];
                 $role = $datauser['id_level'];
-                if ($password === $password_user) {
+                $id_auth = $datauser['id_auth'];
+                if (password_verify($password, $password_user)) {
                     if ($role == '1' || $role == 1) {
                         session_start();
                         $_SESSION['username'] = $username;
                         $_SESSION['status'] = 'login';
                         $_SESSION['role'] = '1';
+                         $_SESSION['auth'] = $id_auth;
                         header('Location: '.BASEURL.'/user');
                     }
                     elseif ($role == '2' || $role == 2) {
@@ -45,12 +48,14 @@ class Auth_models
                         $_SESSION['username'] = $username;
                         $_SESSION['status'] = 'login';
                         $_SESSION['role'] = '2';
-                        header('Location: '.BASEURL.'');
+                         $_SESSION['auth'] = $id_auth;
+                        header('Location: '.BASEURL.'/leader');
                     }elseif ($role == '3' || $role == 3){
                         session_start();
                         $_SESSION['username'] = $username;
                         $_SESSION['status'] = 'login';
                         $_SESSION['role'] = '3';
+                         $_SESSION['auth'] = $id_auth;
                         header('Location: '.BASEURL.'');
                     }
                 }else{

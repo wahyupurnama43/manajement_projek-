@@ -3,9 +3,13 @@
     <div class="row">
         <div class="flash-data" data-flashdata="<?= Flasher::flash(); ?>"></div>
     </div>
+    <div class="d-flex  t-scale">
+       
+    </div>
+
     <!-- add projek -->
     <div class="d-flex justify-content-between t-scale">
-         <a href="<?= BASEURL ?>/projek/index">
+         <a href="<?= BASEURL ?>/leader/projek">
             <button class="btn btn-primary mb-3 shadow-lg"><i class="fas fa-sign-out-alt" style="transform: rotateY(180deg);"></i> &nbsp;Kembali</button>
         </a>
         <div></div>
@@ -42,7 +46,7 @@
                                         <?= $mp['tanggal_awal'] ?>
                                     </td>
                                     <td class="t-scale">
-                                          <a href="<?= BASEURL?>/proses_projek/hapus_MP/<?= $mp['id_detail']?>" class="tombol-hapus" > 
+                                          <a href="<?= BASEURL?>/proses_projek/hapus_Le/<?= $mp['id_detail']?>" class="tombol-hapus" > 
                                             <button class="btn btn-danger "><i class="fas fa-trash-alt"></i> &nbsp;Hapus </button>
                                         </a>
                                     </td>
@@ -68,7 +72,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?= BASEURL ?>/proses_projek/addMember/" method="POST">
+                <form action="<?= BASEURL ?>/proses_projek/addMemberL" method="POST">
                     <div class="form-group">
                         <label for="leader">Member</label>
                         <select name="member" id="" class="form-control">
