@@ -1,8 +1,7 @@
+
  <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <div class="row">
-                        <div class="flash-data" data-flashdata="<?= Flasher::flash(); ?>"></div>
-                    </div>
+                 
 
                     <!-- add user -->
                     <div class="d-flex justify-content-end t-scale">

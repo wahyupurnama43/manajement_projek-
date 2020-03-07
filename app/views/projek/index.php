@@ -1,8 +1,6 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    <div class="row">
-        <div class="flash-data" data-flashdata="<?= Flasher::flash(); ?>"></div>
-    </div>
+   
 
     <!-- add projek -->
     <div class="d-flex justify-content-end t-scale">
@@ -41,13 +39,13 @@
                                  <td>
                                     <?= $td['nama'] ?>
                                 </td>
-                                 <td width="20%">
+                                 <td width="18%">
                                     <?= $td['tugas'] ?>
                                 </td>
                                 <td>
-                                    <?= $td['tanggal_awal'] ?>
+                                    <?= date('d F Y',  strtotime($td['tanggal_awal'])) ?>
                                 </td>
-                                <td width="90%" class="d-inline-flex">
+                                <td width="92%" class="d-inline-flex">
                                     <div class="t-scale pr-1">
                                     <a href="<?= BASEURL?>/projek/ubah_projek/<?= $td['id_projek']?>">
                                         <button  class="btn btn-primary btn-ubah "><i class="fas fa-edit"></i> &nbsp;Edit

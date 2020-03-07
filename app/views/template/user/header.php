@@ -2,8 +2,10 @@
   
   if ($_SESSION['status'] != 'login' && $_SESSION['role'] !== '1') {
     header('Location: '.BASEURL.'/auth/login');
-  }elseif ($_SESSION['role'] !== '1') {
+  }elseif ($_SESSION['role'] == '3') {
     header('Location: '.BASEURL.'');
+  }elseif ($_SESSION['role'] == '2') {
+    header('Location: '.BASEURL.'/leader');
   }
 
 ?>
@@ -32,7 +34,7 @@
   </head>
   <body>
 
-
+    
 
 
 <div class="wrapper">
@@ -65,7 +67,9 @@
 
     <!-- Page Content -->
 
-     
+      <div class="row">
+        <div class="flash-data" data-flashdata="<?= Flasher::flash(true); ?>"></div>
+      </div>
 
          <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">

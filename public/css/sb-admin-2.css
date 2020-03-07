@@ -11181,6 +11181,12 @@ a:focus {
     border-bottom: 1px dashed #ddd;
     margin: 40px 0;
 }
+.scale a{
+    transition: .5s;
+}
+.scale a:hover{
+  transform: scale(1.08);
+}
 
 
 

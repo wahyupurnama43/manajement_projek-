@@ -6,51 +6,69 @@ class Proses_projek extends Controller
 {
     public function addProjek()
     {
-    	if ($this->model('Projek_models')->addProjek($_POST) > 0){
-    		Flasher::setFlash('berhasil', 'di Tambah','success');
+        $add = $this->model('Projek_models')->addProjek($_POST);
+    	if ($add['status']) {
+    		Flasher::setFlash('Projek ', 'Berhasil di Tambah','success');
     		header('Location: '. BASEURL . '/projek/index');
     		exit();
     	}else {
-    		Flasher::setFlash('Gagal','di Tambah','danger');
+    		Flasher::setFlash('Projek ', 'Gagal di Tambah ', 'error');
     		header('Location: '. BASEURL . '/projek/index');
     		exit();
     	}
     }
-
-     public function addProjekL() //untuk menu leader
+    public function addProjekL()
     {
-        if ($this->model('Projek_models')->addProjek($_POST) > 0){
-            Flasher::setFlash('berhasil', 'di Tambah','success');
+        $add = $this->model('Projek_models')->addProjek($_POST);
+        if ($add['status']) {
+            Flasher::setFlash('Projek ', 'Berhasil di Tambah','success');
             header('Location: '. BASEURL . '/leader/projek');
             exit();
         }else {
-            Flasher::setFlash('Gagal','di Tambah','danger');
+            Flasher::setFlash('Projek ', 'Gagal di Tambah ', 'error');
             header('Location: '. BASEURL . '/leader/projek');
             exit();
         }
     }
 
+
     public function updateProjek()
     {
-    	if ($this->model('Projek_models')->updateProjek($_POST) > 0){
-    		Flasher::setFlash('berhasil', 'di Ubah','success');
+        $add = $this->model('Projek_models')->updateProjek($_POST);
+    	if ($add['status']){
+    		Flasher::setFlash('Projek ', 'Berhasil di Ubah','success');
     		header('Location: '. BASEURL . '/projek/index');
     		exit();
     	}else {
-    		Flasher::setFlash('Gagal','di Ubah','danger');
-    		header('Location: '. BASEURL . '/projek/ubah_projek');
+    		Flasher::setFlash('Projek ', 'Gagal di Ubah ', 'error');
+    		header('Location: '. BASEURL . '/projek/ubah_projek/'.$_POST['id']);
     		exit();
     	}
     }
 
+    public function updateProjekL()
+    {
+        $add = $this->model('Projek_models')->updateProjek($_POST);
+        if ($add['status']){
+            Flasher::setFlash('Projek ', 'Berhasil di Ubah','success');
+            header('Location: '. BASEURL . '/leader/projek');
+            exit();
+        }else {
+            Flasher::setFlash('Projek ', 'Gagal di Ubah ', 'error');
+            header('Location: '. BASEURL . '/leader/edit/'.$_POST['id']);
+            exit();
+        }
+    }
+
     public function addUser()
     {
-    	if ( $this->model('Projek_models')->addUser($_POST) > 0 ) {
-    		Flasher::setFlash('Berhasil', 'Di Tambah', 'success');
+        $add = $this->model('Projek_models')->addUser($_POST);
+    	if ($add['status']) {
+    		Flasher::setFlash('User ', 'Berhasil Di Tambah', 'success');
     		header('Location: '.BASEURL. '/projek/user');
     		exit();
     	}else{
-    		Flasher::setFlash('Gagal ', 'Di ambah', 'Danger');
+    		Flasher::setFlash('User ', 'Gagal Di Tambah', 'error');
     		header('Location: '.BASEURL. '/projek/user');
     		exit();
     	}
@@ -58,12 +76,13 @@ class Proses_projek extends Controller
 
     public function hapus($id)
     {
-    	if ( $this->model('Projek_models')->hapus($id) > 0 ) {
-    		Flasher::setFlash('Berhasil', 'Di Tambah', 'success');
+        $add = $this->model('Projek_models')->hapus($id);
+    	if ($add['status']) {
+    		Flasher::setFlash('User ', 'Berhasil Di Hapus', 'success');
     		header('Location: '.BASEURL. '/projek/user');
     		exit();
     	}else{
-    		Flasher::setFlash('Gagal ', 'Di Tambah', 'Danger');
+    		Flasher::setFlash('User ', 'Gagal Di Hapus', 'error');
     		header('Location: '.BASEURL. '/projek/user');
     		exit();
     	}
@@ -71,12 +90,13 @@ class Proses_projek extends Controller
 
     public function addLaporan()
     {
-    	if ( $this->model('Projek_models')->addLaporan($_POST) > 0 ) {
-    		Flasher::setFlash('Berhasil', 'Di Tambah', 'success');
+        $add =  $this->model('Projek_models')->addLaporan($_POST);
+    	if ($add['status']) {
+    		Flasher::setFlash('Berhasil ', 'Di Tambah', 'success');
     		header('Location: '.BASEURL. '/projek/laporan');
     		exit();
     	}else{
-    		Flasher::setFlash('Gagal ', 'Di Tambah', 'danger');
+    		Flasher::setFlash('Laporan ', 'Gagal Di Tambah', 'error');
     		header('Location: '.BASEURL. '/projek/laporan');
     		exit();
     	}
@@ -84,12 +104,13 @@ class Proses_projek extends Controller
 
     public function addLaporanUser()
     {
-        if ( $this->model('Projek_models')->addLaporan($_POST) > 0 ) {
-            Flasher::setFlash('Berhasil', 'Di Tambah', 'success');
+        $add =  $this->model('Projek_models')->addLaporan($_POST);
+        if ($add['status']) {
+            Flasher::setFlash('Laporan ', 'Berhasil Di Tambah', 'success');
             header('Location: '.BASEURL. '/user/laporan');
             exit();
         }else{
-            Flasher::setFlash('Gagal ', 'Di Tambah', 'danger');
+            Flasher::setFlash('Laporan ', 'Gagal Di Tambah', 'error');
             header('Location: '.BASEURL. '/user/laporan');
             exit();
         }
@@ -97,12 +118,13 @@ class Proses_projek extends Controller
 
     public function hapus_Laporan($id)
     {
-    	if ( $this->model('Projek_models')->hapus_Laporan($id) > 0 ) {
-    		Flasher::setFlash('Berhasil', 'Di Hapus', 'success');
+        $add =  $this->model('Projek_models')->hapus_Laporan($id);
+    	if ($add['status']) {
+    		Flasher::setFlash('Laporan ', 'Berhasil Di Hapus', 'success');
     		header('Location: '.BASEURL. '/projek/laporan');
     		exit();
     	}else{
-    		Flasher::setFlash('Gagal', 'Di Hapus', 'danger');
+    		Flasher::setFlash('Laporan ', 'Gagal Di Hapus', 'error');
     		header('Location: '.BASEURL. '/projek/laporan');
     		exit();
     	}
@@ -110,93 +132,98 @@ class Proses_projek extends Controller
 
     public function ubah_Laporan()
     {
-    	if ( $this->model('Projek_models')->ubah_Laporan($_POST) > 0 ) {
-    		Flasher::setFlash('Berhasil', 'Di Ubah', 'success');
+        $add = $this->model('Projek_models')->ubah_Laporan($_POST);
+    	if ($add['status']) {
+    		Flasher::setFlash('Laporan ', 'Berhasil Di Ubah', 'success');
     		header('Location: '.BASEURL. '/projek/laporan');
     		exit();
     	}else{
-    		Flasher::setFlash('Gagal', 'Di Ubah', 'danger');
-    		header('Location: '.BASEURL. '/projek/laporan');
+    		Flasher::setFlash('Laporan ', 'Gagal Di Ubah', 'error');
+    		header('Location: '.BASEURL. '/projek/Edit_Laporan/'.$_POST['id']);
     		exit();
     	}
     }
 
 
     public function addMember()
-    { 
-        
-        if ( $this->model('Projek_models')->addMember($_POST) > 0 ) {
-    		Flasher::setFlash('Berhasil', 'Di Ditambah', 'success');
-            header('Location: '.BASEURL. '/projek/member/$id_projek/$id_jenis');
-    		exit();
-    	}else{
-    		Flasher::setFlash('Gagal', 'Di Ditambah', 'danger');
-    		header('Location: '.BASEURL. '/projek/member');
-    		exit();
-    	}
-    }
-
-     public function addMemberL()
     {
-        if ( $this->model('Projek_models')->addMember($_POST) > 0 ) {
-            Flasher::setFlash('Berhasil', 'Di Ditambah', 'success');
-            header('Location: '.BASEURL. '/leader/projek');
+        $add = $this->model('Projek_models')->addMember($_POST);
+        if ($add['status']) {
+            Flasher::setFlash('User ', 'Berhasil di Tambah', 'success');
+            header('Location: ' . BASEURL . '/projek/member/' . $_POST['id_projek'] . '/' . $_POST['id_jenis']);
             exit();
-        }else{
-            Flasher::setFlash('Gagal', 'Di Ditambah', 'danger');
-            header('Location: '.BASEURL. '/leader/projek');
+        } else {
+            Flasher::setFlash('User ', 'Sudah di Tambahkan ', 'error');
+            header('Location: ' . BASEURL . '/projek/member/' . $_POST['id_projek'] . '/' . $_POST['id_jenis']);
             exit();
         }
     }
 
-    public function hapus_MP($id)
+     public function addMemberL()
     {
-    	if ( $this->model('Projek_models')->hapus_MP($id) > 0 ) {
-    		Flasher::setFlash('Berhasil', 'Di hapus', 'success');
-    		header('Location: '.BASEURL. '/projek/index');
+        $add = $this->model('Projek_models')->addMember($_POST);
+        if ($add['status']) {
+            Flasher::setFlash('User ', 'Berhasil di Tambah', 'success');
+            header('Location: ' . BASEURL . '/leader/member/' . $_POST['id_projek'] . '/' . $_POST['id_jenis']);
+            exit();
+        } else {
+            Flasher::setFlash('User ', 'Sudah di Tambahkan ', 'error');
+            header('Location: ' . BASEURL . '/leader/member/' . $_POST['id_projek'] . '/' . $_POST['id_jenis']);
+            exit();
+        }
+    }
+
+    public function hapus_MP($id,$id_projek,$id_jenis)
+    {
+        $add = $this->model('Projek_models')->hapus_MP($id);
+    	if ($add['status']) {
+    		Flasher::setFlash('Member', ' Berhasil Di hapus', 'success');
+    		header('Location: '.BASEURL. '/projek/member/'.$id_projek.'/'.$id_jenis);
     		exit();
     	}else{
-    		Flasher::setFlash('Gagal', 'Di hapus', 'danger');
-    		header('Location: '.BASEURL. '/projek/index');
+    		Flasher::setFlash('Member', ' Gagal Di hapus', 'error');
+    		header('Location: '.BASEURL. '/projek/member/'.$id_projek.'/'.$id_jenis);
     		exit();
     	}
     }
 
-    public function hapus_Le($id)
+    public function hapus_Le($id,$id_projek,$id_jenis)
     {
-        if ( $this->model('Projek_models')->hapus_MP($id) > 0 ) {
-            Flasher::setFlash('Berhasil', 'Di hapus', 'success');
-            header('Location: '.BASEURL. '/leader/projek');
+        $add = $this->model('Projek_models')->hapus_MP($id);
+        if ($add['status']) {
+            Flasher::setFlash('Member', ' Berhasil Di hapus', 'success');
+            header('Location: '.BASEURL. '/leader/member/'.$id_projek.'/'.$id_jenis);
             exit();
         }else{
-            Flasher::setFlash('Gagal', 'Di hapus', 'danger');
-            header('Location: '.BASEURL. '/leader/projek');
+            Flasher::setFlash('Member', ' Gagal Di hapus', 'error');
+            header('Location: '.BASEURL. '/leader/member/'.$id_projek.'/'.$id_jenis);
             exit();
         }
     }
 
     public function projek_selesai($id)
-    {
-        if ( $this->model('Projek_models')->projek_selesai($id) > 0 ) {
-            Flasher::setFlash('Berhasil', 'Di hapus', 'success');
+    {   $add = $this->model('Projek_models')->projek_selesai($id);
+        if ($add['status']) {
+            Flasher::setFlash('Projek', ' Berhasil Di Selesaikan', 'success');
             header('Location: '.BASEURL. '/projek/list');
             exit();
         }else{
-            Flasher::setFlash('Gagal', 'Di hapus', 'danger');
-            header('Location: '.BASEURL. '/projek/list');
+            Flasher::setFlash('Projek', ' Gagal Di Selesaikan', 'error');
+            header('Location: '.BASEURL. '/projek/index');
             exit();
         }
     }
 
     public function projek_selesaiL($id) //untuk menu leader
     {
-        if ( $this->model('Projek_models')->projek_selesai($id) > 0 ) {
-            Flasher::setFlash('Berhasil', 'Di hapus', 'success');
-            header('Location: '.BASEURL. '/leader');
+        $add = $this->model('Projek_models')->projek_selesai($id);
+        if ($add['status']) {
+            Flasher::setFlash('Projek', ' Berhasil Di Selesaikan', 'success');
+            header('Location: '.BASEURL. '/leader/list');
             exit();
         }else{
-            Flasher::setFlash('Gagal', 'Di hapus', 'danger');
-            header('Location: '.BASEURL. '/leader');
+            Flasher::setFlash('Projek', ' Gagal Di Selesaikan', 'error');
+            header('Location: '.BASEURL. '/leader/projek');
             exit();
         }
     }
@@ -204,20 +231,34 @@ class Proses_projek extends Controller
 
     public function hapus_projek($id)
     {
-        if ( $this->model('Projek_models')->hapus_projek($id) > 0 ) {
-            Flasher::setFlash('Berhasil', 'Di Hapus', 'success');
+        $add =  $this->model('Projek_models')->hapus_projek($id);
+        if ($add['status']) {
+            Flasher::setFlash('Projek', ' Berhasil Di Hapus', 'success');
             header('Location: '.BASEURL. '/projek/list');
             exit();
         }else{
-            Flasher::setFlash('Gagal', 'Di Hapus', 'danger');
+            Flasher::setFlash('Projek', ' Gagal Di Hapus', 'error');
             header('Location: '.BASEURL. '/projek/list');
+            exit();
+        }
+    }
+
+    public function hapus_projekL($id)
+    {
+        if ( $this->model('Projek_models')->hapus_projek($id) ) {
+            Flasher::setFlash('Berhasil', 'Di Hapus', 'success');
+            header('Location: '.BASEURL. '/leader/list');
+            exit();
+        }else{
+            Flasher::setFlash('Gagal', 'Di Hapus', 'danger');
+            header('Location: '.BASEURL. '/leader/list');
             exit();
         }
     }
 
     public function logout()
     {
-        if ( $this->model('Projek_models')->logout() > 0 ) {
+        if ( $this->model('Projek_models')->logout() ) {
             Flasher::setFlash('Berhasil', 'Logout', 'success');
             header('Location: '.BASEURL. '/projek/list');
             exit();

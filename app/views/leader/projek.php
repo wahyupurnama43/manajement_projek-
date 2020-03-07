@@ -1,8 +1,6 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    <div class="row">
-        <div class="flash-data" data-flashdata="<?= Flasher::flash(); ?>"></div>
-    </div>
+    
 
     <!-- add projek -->
     <div class="d-flex justify-content-end t-scale">
@@ -49,7 +47,7 @@
                                 </td>
                                 <td width="90%" class="d-inline-flex">
                                     <div class="t-scale pr-1">
-                                    <a href="<?= BASEURL?>/projek/ubah_projek/<?= $td['id_projek']?>">
+                                    <a href="<?= BASEURL?>/leader/edit/<?= $td['id_projek']?>">
                                         <button  class="btn btn-primary btn-ubah "><i class="fas fa-edit"></i> &nbsp;Edit
                                         </button></a>
                                     </div>
@@ -102,14 +100,14 @@
                     </div>
                     <div class="form-group">
                         <label for="leader">Leader</label>
+                        <?php $id_auth = $_SESSION['auth']; ?>
                         <select name="leader" id="" class="form-control">
-                            <option value="">pilihan</option>
                              <?php if ($data['leader']) : ?>
-                                <?php foreach ($data['leader'] as $leader) : ?>
-                                    <option value="<?= $leader['id_auth']; ?>">
+                                <?php foreach ($data['leader'] as $leader): ?>
+                                      <option <?= $leader['id_auth'] ===  $id_auth ? "selected" : ""; ?> value="<?= $leader['id_auth']; ?>">
                                         <?= $leader['nama']; ?>
                                     </option>
-                                 <?php endforeach; ?>
+                                <?php endforeach ?>
                             <?php else : ?>
                                     <option value="null">No jurusan detected.</option>
                             <?php endif; ?>

@@ -1,4 +1,9 @@
 
+<div class="d-flex justify-content-center t-scale">
+            <a href="<?= BASEURL ?>/user" class="hover">
+                <button class="btn btn-primary "><i class="fas fa-sign-out-alt " style="transform: rotateY(180deg);"></i> &nbsp;Kembali
+                </button></a>
+</div>
 <div class="container-fluid my-5" style="width: 80%">
      <!-- DataTales Example -->
     <div class="card shadow mb-4" >
@@ -33,9 +38,4 @@
             </div>
         </div>
     </div>
-</div>
-<div class="d-flex justify-content-center t-scale">
-            <a href="<?= BASEURL ?>/user" class="hover">
-                <button class="btn btn-primary "><i class="fas fa-sign-out-alt " style="transform: rotateY(180deg);"></i> &nbsp;Kembali
-                </button></a>
 </div>

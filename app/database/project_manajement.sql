@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 26 Feb 2020 pada 05.03
+-- Waktu pembuatan: 05 Mar 2020 pada 07.08
 -- Versi server: 10.4.6-MariaDB
 -- Versi PHP: 7.3.9
 
@@ -41,14 +41,13 @@ CREATE TABLE `auth` (
 --
 
 INSERT INTO `auth` (`id_auth`, `nama`, `username`, `password`, `id_level`) VALUES
-(40, 'admin', 'Admin', '$2y$10$oS/DygpWJ8jKmyWMblNSkeQe2tq94j19uIYpNzJ/2gs/wAK5gu3q2', 3),
 (41, 'Wahyu Purnama', 'wahyu', '$2y$10$ODTpxh3fKLPSGIXPANSTiutZLhxjZkiVKXPC6oCCr68MU1gtp1Dxa', 2),
 (42, 'Yudha Adistara', 'yudha', '$2y$10$G9erDNqol46r1N1ZrpexL.PdnYN.4xQAGHfWS4x1yaQ0HlfQtDfoe', 2),
-(43, 'Prihandana putra', 'prihandana', '$2y$10$WwWdvnPeTyecNrwOxy4XGOLWdaP.sStgdVDFRgnSs1s.VgHOnIfim', 1),
 (44, 'Trinity Laksmi', 'trinity', '$2y$10$XwnxL5CaMItZDeaer6dxoeBbNNLoXCnZQalFbghBVWlZEkDDcUKku', 1),
 (45, 'Jeni Andini', 'jeni', '$2y$10$Mal6hYkknfSixJB0L5KZqOKZnZ3K9zow2ehEgSu2F6uKuPbBjpOD6', 1),
-(46, 'rifki rafi\'i', 'rifki', '$2y$10$K88v14msDawtvWb/xPLJZeYHDqBdZmJI5Fpk3WbGn1rWPENIDhWrK', 1),
-(47, 'Nulia Pratiwi', 'nulia', '$2y$10$AFpQKvG/ce0NeGHHmdn/DOFGvGnPk/AAh70Ra7CsmzJ0zZ.egz2vi', 1);
+(47, 'Nulia Pratiwi', 'nulia', '$2y$10$AFpQKvG/ce0NeGHHmdn/DOFGvGnPk/AAh70Ra7CsmzJ0zZ.egz2vi', 1),
+(48, 'Admin', 'Admin', '$2y$10$jExfwVOfdVhLJ4f65JMgMOGWW/xlUY9iMKlp0Wp/o8bF7L0pRkT96', 3),
+(49, 'Rizqy Albani', 'rizky', '$2y$10$jv/sOdCbXoH7Aa/MMhYPM.kaghs9et9urs.AuuUXiyrM3Z131JcjK', 1);
 
 -- --------------------------------------------------------
 
@@ -67,7 +66,8 @@ CREATE TABLE `jenis_projek` (
 
 INSERT INTO `jenis_projek` (`id_jenis`, `jenis_projek`) VALUES
 (1, 'Web Aplikasi '),
-(2, 'Android');
+(2, 'Android'),
+(3, 'Database');
 
 -- --------------------------------------------------------
 
@@ -88,19 +88,14 @@ CREATE TABLE `tb_detail` (
 --
 
 INSERT INTO `tb_detail` (`id_detail`, `id_auth`, `id_projek`, `id_jenis`, `tanggal_awal`) VALUES
-(48, 44, 40, 1, '2020-03-24 18:56:41'),
-(49, 45, 40, 1, '2020-03-24 18:56:53'),
-(57, 43, 40, 1, '2020-02-25 16:39:35'),
-(58, 47, 40, 1, '2020-02-25 16:40:57'),
-(77, 43, 44, 2, '2020-02-25 21:44:54'),
-(79, 43, 44, 2, '2020-02-26 07:20:54'),
-(80, 43, 44, 2, '2020-02-26 07:21:12'),
-(81, 43, 44, 2, '2020-02-26 07:24:39'),
-(82, 44, 44, 2, '2020-02-26 07:25:37'),
-(83, 43, 44, 2, '2020-02-26 07:45:31'),
-(84, 44, 44, 2, '2020-02-26 07:56:03'),
-(85, 43, 44, 2, '2020-02-26 08:00:43'),
-(86, 43, 44, 2, '2020-02-26 08:06:47');
+(19, 44, 98, 1, '2020-02-28 07:19:49'),
+(27, 45, 103, 1, '2020-02-28 08:02:26'),
+(28, 44, 103, 1, '2020-02-28 08:02:31'),
+(29, 44, 107, 1, '2020-02-28 08:10:07'),
+(30, 44, 108, 2, '2020-02-28 09:26:54'),
+(31, 45, 108, 2, '2020-02-28 09:26:58'),
+(32, 45, 107, 1, '2020-02-28 09:27:07'),
+(34, 45, 109, 1, '2020-03-02 15:01:46');
 
 -- --------------------------------------------------------
 
@@ -121,7 +116,13 @@ CREATE TABLE `tb_laporan` (
 --
 
 INSERT INTO `tb_laporan` (`id_laporan`, `id_auth`, `id_jenis`, `tugas`, `tanggal_input`) VALUES
-(39, 43, 1, 'membuat login', '2020-03-24 19:08:46');
+(51, 44, 2, 'dasdas', '2020-02-28 07:20:19'),
+(57, 44, 1, 'iyaaaaaaaaaaaaa', '2020-02-28 09:18:57'),
+(61, 44, 1, 'asdas', '2020-02-28 09:21:26'),
+(62, 44, 2, 'asasda', '2020-02-28 09:22:17'),
+(63, 45, 1, 'asdas', '2020-02-28 09:22:39'),
+(64, 44, 2, 'sadsdas', '2020-02-28 09:27:42'),
+(65, 45, 2, 'asdas', '2020-02-28 09:28:11');
 
 -- --------------------------------------------------------
 
@@ -163,11 +164,13 @@ CREATE TABLE `tb_projek` (
 --
 
 INSERT INTO `tb_projek` (`id_projek`, `id_jenis`, `id_auth`, `tugas`, `tanggal_awal`, `tanggal_akhir`) VALUES
-(40, 2, 41, 'membuat web sekolah smk n 1 denpasar', '2020-03-24', '2020-02-25'),
-(41, 1, 41, 'asdas', '2020-02-25', '2020-02-25'),
-(42, 1, 41, 'asdas', '2020-02-25', '2020-02-25'),
-(43, 2, 41, 'sdasda', '2020-02-25', '2020-02-25'),
-(44, 2, 41, 'gfg', '2020-02-25', '0000-00-00');
+(95, 2, 41, 'ASasasdas', '2020-02-27', '2020-02-28'),
+(98, 1, 42, 'asda', '2020-02-28', '2020-02-28'),
+(103, 1, 41, 'sdlaksd', '2020-02-28', '2020-02-28'),
+(106, 1, 41, 'asdasd', '2020-02-28', '2020-02-28'),
+(107, 1, 41, 'asdas', '2020-02-28', '2020-03-03'),
+(108, 2, 41, 'asdas', '2020-02-28', '0000-00-00'),
+(109, 1, 42, 'sdasda', '2020-02-28', '0000-00-00');
 
 --
 -- Indexes for dumped tables
@@ -191,6 +194,8 @@ ALTER TABLE `jenis_projek`
 --
 ALTER TABLE `tb_detail`
   ADD PRIMARY KEY (`id_detail`),
+  ADD UNIQUE KEY `tb_detail` (`id_detail`,`id_auth`),
+  ADD UNIQUE KEY `uk_tb_detail` (`id_auth`,`id_projek`),
   ADD KEY `id_auth` (`id_auth`),
   ADD KEY `id_projek` (`id_projek`),
   ADD KEY `id_jenis` (`id_jenis`);
@@ -227,25 +232,25 @@ ALTER TABLE `tb_projek`
 -- AUTO_INCREMENT untuk tabel `auth`
 --
 ALTER TABLE `auth`
-  MODIFY `id_auth` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id_auth` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT untuk tabel `jenis_projek`
 --
 ALTER TABLE `jenis_projek`
-  MODIFY `id_jenis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_jenis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_detail`
 --
 ALTER TABLE `tb_detail`
-  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_laporan`
 --
 ALTER TABLE `tb_laporan`
-  MODIFY `id_laporan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id_laporan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_level`
@@ -257,7 +262,7 @@ ALTER TABLE `tb_level`
 -- AUTO_INCREMENT untuk tabel `tb_projek`
 --
 ALTER TABLE `tb_projek`
-  MODIFY `id_projek` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id_projek` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

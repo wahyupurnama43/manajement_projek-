@@ -1,5 +1,13 @@
-<?php  ?>
+<?php  
 
+if (isset($_SESSION['status']) && $_SESSION['role']=='3'){
+    header('Location: '.BASEURL);
+}elseif (isset($_SESSION['status']) && $_SESSION['role']=='2'){
+    header('Location: '.BASEURL.'/leader');
+}elseif (isset($_SESSION['status']) && $_SESSION['role']=='1') {
+    header('Location: '.BASEURL.'/user');
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,5 +34,7 @@
 </head>
 
 <body class="bg-gradient-primary">
-
+     <div class="row">
+        <div class="flash-data" data-flashdata="<?= Flasher::flash(true); ?>"></div>
+    </div>
     <div class="container">

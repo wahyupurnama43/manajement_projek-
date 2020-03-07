@@ -59,9 +59,9 @@ class Projek extends Controller
         $data['judul'] = 'Laporan Harian';
         $data['Laporan'] = $this->model('Get_models')->ambilLaporan();
         $data['member'] = $this->model('Get_models')->ambilUserMember();
-        $data['jenis_projek'] = $this->model('Get_models')->ambilJenisProjek();
+        $data['jenis_projek'] = $this->model('Get_models')->ambilJenisProjekadmin();
         $this->view('template/header',$data);
-        $this->view('projek/laporan_harian', $data);
+        $this->view('projek/laporan_harian',$data);
         $this->view('template/footer');
     }
 
@@ -82,8 +82,8 @@ class Projek extends Controller
     {
         $data['judul'] = 'List Projek';
         $data['TD'] = $this->model('Get_models')->ambilDetailselesai(); 
-        $data['leader'] = $this->model('Get_models')->ambilallLeader();
-        $data['projek'] =  $this->model('Get_models')->ambilallProjek(); 
+        // $data['leader'] = $this->model('Get_models')->ambilallLeader();
+        // $data['projek'] =  $this->model('Get_models')->ambilallProjek(); 
         $this->view('template/header',$data);
         $this->view('projek/list', $data);
         $this->view('template/footer');

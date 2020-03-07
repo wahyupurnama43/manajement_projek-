@@ -1,3 +1,6 @@
+<div class="row">
+        <div class="flash-data" data-flashdata="<?= Flasher::flash(true); ?>"></div>
+    </div>
  <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- DataTales Example -->

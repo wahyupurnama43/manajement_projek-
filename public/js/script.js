@@ -9,11 +9,12 @@ $('.mydatatable').DataTable({
         if (flashData) {
           Swal.fire({
             title: 'Data Manajement',
-            text: 'Berhasil ' + flashData,
-            icon: 'success',
-            type: 'success'
+            text: flashData.pesan + flashData.aksi,
+            icon: flashData.tipe,
+            type: flashData.tipe
           })
         } 
+        
           $('.tombol-hapus').on('click', function(e){
 
           e.preventDefault();

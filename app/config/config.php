@@ -1,6 +1,6 @@
 <?php  
 
-define('BASEURL', 'http://localhost/manajement_projek/public');
+define('BASEURL', 'http://bamboomedia.com/manajement_projek/public');
 
 //DB
 define('DB_HOST', 'localhost');

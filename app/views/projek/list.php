@@ -1,8 +1,15 @@
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
-     <div class="row">
-       <div class="flash-data" data-flashdata="<?= Flasher::flash(); ?>"></div>
+    <div class="d-flex justify-content-between t-scale">
+        <div class="">
+            <button class="btn btn-primary mb-3 shadow-lg" data-toggle="modal" data-target="#cetaklaporanpdf">Cetak Laporan PDF &nbsp;<i class="fas fa-print"></i></button>
+            <button class="btn btn-success mb-3 shadow-lg" data-toggle="modal" data-target="#cetaklaporanexel">Export Laporan Excel &nbsp;<i class="fas fa-print"></i></button>
+        </div>
+        <div class=""></div>
+        <div class=""></div>
     </div>
+    <!-- <button class="btn btn-primary mb-3 shadow-lg" data-toggle="modal" data-target="#cetaklaporanpdf">Cetak Laporan PDF &nbsp;<i class="fas fa-print"></i></button> -->
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -37,10 +44,10 @@
                                     <?= $mp['tugas'] ?>
                                 </td>
                                 <td width="15%">
-                                    <?= $mp['tanggal_awal'] ?>
+                                    <?= date('d F Y', strtotime($mp['tanggal_awal'])) ?>
                                 </td>
                                   <td width="15%">
-                                    <?= $mp['tanggal_akhir'] ?>
+                                    <?= date('d F Y', strtotime($mp['tanggal_akhir'])) ?>
                                 </td>
                                 <td width="25%" class="t-scale">
                                     <a class=" tombol-hapus" href="<?= BASEURL ?>/Proses_projek/hapus_projek/<?= $mp['id_projek'] ?>">
@@ -66,3 +73,65 @@
 
 <!-- /.container-fluid -->
 
+<!-- Modal -->
+<div class="modal fade" id="cetaklaporanpdf" tabindex="-1" role="dialog" aria-labelledby="judul" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="judul">Cetak Laporan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="<?= BASEURL ?>/laporan/cetakL" method="POST" target="_blank">
+                    <div class="form-group">
+                        <label for="">Tanggal Awal</label>
+                       <input type="date" class="form-control" name="tgl_awal">
+                    </div>
+                    <div class="form-group">
+                         <div class="form-group">
+                            <label for="">Tanggal Akhir</label>
+                           <input type="date" class="form-control" name="tgl_akhir">
+                        </div>
+                    </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button type="submit" name="submit" class="btn btn-primary">Cetak PDF <i class="fas fa-print"></i></button>
+            </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="modal fade" id="cetaklaporanexel" tabindex="-1" role="dialog" aria-labelledby="judul" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="judul">Cetak Laporan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="<?= BASEURL ?>/laporan/cetakexcellist" method="POST" target="_blank">
+                    <div class="form-group">
+                        <label for="">Tanggal Awal</label>
+                       <input type="date" class="form-control" name="tgl_awal">
+                    </div>
+                    <div class="form-group">
+                         <div class="form-group">
+                            <label for="">Tanggal Akhir</label>
+                           <input type="date" class="form-control" name="tgl_akhir">
+                        </div>
+                    </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button type="submit" name="submit" class="btn btn-primary">Cetak PDF <i class="fas fa-print"></i></button>
+            </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+</div> 

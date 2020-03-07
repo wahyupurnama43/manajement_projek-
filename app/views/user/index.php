@@ -1,8 +1,9 @@
 <div class="container">
-        <h1 class="judul text-center my-5">Daftar Projek Bamboo Media</h1>
-           <div class="row">
+        <h1 class="judul text-center mt-5">Daftar Projek Bamboo Media</h1>
+        <h4  class="judul text-center mt-3">Programmer by <span style="font-weight: 600"><?= $_SESSION['nama'] ?></span></h4>
+           <div class="row ">
             <?php foreach ($data['TD'] as $lp): ?>
-                 <div class="col-lg-4">
+                 <div class="col-lg-4 mt-4">
                     <div class="card shadow" style="width: 21rem;">
                       <div class="card-body text-center">
                         <h5 class="card-title "><?= $lp['jenis_projek'] ?></h5>

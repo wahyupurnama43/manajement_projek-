@@ -1,11 +1,21 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
+    
+
     <!-- DataTales Example -->
     <div class="row d-flex justify-content-center ">
         <div class="col-lg-8">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3 text-center">
-                    <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-book"></i> &nbsp;Ubah Projek</h6>
+            <div class="card shadow mb-4 ">
+                <div class="card-header py-3 d-flex justify-content-between ">
+                    <div class=""></div>
+                    <div class="t-scale">
+                        <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-book"></i> &nbsp;Ubah Projek</h6>
+                    </div>
+                    <div class="scale">
+                         <a href="<?= BASEURL ?>/projek/index">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </div>
                 </div>
                 <div class="card-body">
                     <form action="<?= BASEURL ?>/Proses_projek/updateProjek" method="POST">

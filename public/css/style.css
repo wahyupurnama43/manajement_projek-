@@ -185,8 +185,12 @@ a.article:hover {
 .t-scale button{
   transition: .5s;
   border-radius: 40px;
+
+}
+.scale a i.fas{
+    transition: .5s;
 }
 
-.t-scale button:hover,table tr td button:hover, .card-body .py-2 button:hover{
+.t-scale button:hover,table tr td button:hover, .card-body .py-2 button:hover, .scale a i.fas:hover{
   transform: scale(1.08);
 }

@@ -1,8 +1,5 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    <div class="row">
-        <div class="flash-data" data-flashdata="<?= Flasher::flash(); ?>"></div>
-    </div>
     <div class="d-flex  t-scale">
        
     </div>
@@ -46,7 +43,7 @@
                                         <?= $mp['tanggal_awal'] ?>
                                     </td>
                                     <td class="t-scale">
-                                          <a href="<?= BASEURL?>/proses_projek/hapus_Le/<?= $mp['id_detail']?>" class="tombol-hapus" > 
+                                          <a href="<?= BASEURL?>/proses_projek/hapus_Le/<?= $mp['id_detail']?>/<?= $mp['id_projek']?>/<?= $mp['id_jenis']?>" class="tombol-hapus" > 
                                             <button class="btn btn-danger "><i class="fas fa-trash-alt"></i> &nbsp;Hapus </button>
                                         </a>
                                     </td>

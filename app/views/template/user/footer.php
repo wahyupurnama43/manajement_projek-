@@ -25,6 +25,8 @@
 
     <!-- jQuery Custom Scroller CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+    
+     <script src="<?= BASEURL ?>/js/sweetalert2.all.min.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -44,7 +46,16 @@
                 $('a[aria-expanded=true]').attr('aria-expanded', 'false');
             });
         });
+
+         const  flashData = $('.flash-data').data('flashdata');
+        if (flashData) {
+          Swal.fire({
+            title: 'Data Manajement',
+            text: flashData.pesan + flashData.aksi,
+            icon: flashData.tipe,
+            type: flashData.tipe
+          })
+        } 
     </script>
-     <script src="<?= BASEURL ?>/js/script2.js"></script>
   </body>
 </html>

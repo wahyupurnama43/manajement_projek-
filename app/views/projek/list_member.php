@@ -1,7 +1,9 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    <div class="row">
-        <div class="flash-data" data-flashdata="<?= Flasher::flash(); ?>"></div>
+     <div class="d-flex justify-content-between t-scale">
+         <a href="<?= BASEURL ?>/projek/list">
+            <button class="btn btn-primary mb-3 shadow-lg"><i class="fas fa-sign-out-alt" style="transform: rotateY(180deg);"></i> &nbsp;Kembali</button>
+        </a>
     </div>
 
     <!-- DataTales Example -->

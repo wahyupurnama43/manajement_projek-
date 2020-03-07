@@ -6,6 +6,8 @@
     header('Location: '.BASEURL.'/auth/login');
   } elseif ($_SESSION['role'] == '1') {
    header('Location: '.BASEURL.'/user');
+   }elseif ($_SESSION['role'] == '2') {
+   header('Location: '.BASEURL.'/leader');
    }
 
 ?>
@@ -39,7 +41,9 @@
 </head>
 
 <body id="page-top">
-
+ <div class="row">
+        <div class="flash-data" data-flashdata="<?= Flasher::flash(true); ?>"></div>
+    </div>
   <!-- Page Wrapper -->
   <div id="wrapper">
 

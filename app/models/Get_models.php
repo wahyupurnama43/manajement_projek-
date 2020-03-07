@@ -11,43 +11,65 @@ class Get_models
 	}
 
   public function ambilDetail()
-  {
-    $group = $_SESSION['role'];
-    $id_auth = $_SESSION['auth'];
-    if($group=='3')
-    {
-      $query = "SELECT * FROM tb_projek 
-                INNER JOIN auth ON tb_projek.id_auth = auth.id_auth
-                INNER JOIN jenis_projek ON tb_projek.id_jenis = jenis_projek.id_jenis WHERE tanggal_akhir = '0000-00-00' ";
+  { 
+    if (isset($_SESSION['role']) && isset($_SESSION['auth'])) {
+        $group = $_SESSION['role'];
+        $id_auth = $_SESSION['auth'];
+        if($group =='3')
+        {
+          $query = "SELECT * FROM tb_projek 
+                    INNER JOIN auth ON tb_projek.id_auth = auth.id_auth
+                    INNER JOIN jenis_projek ON tb_projek.id_jenis = jenis_projek.id_jenis WHERE tanggal_akhir = '0000-00-00' ";
+        }
+        else if($group=='2')
+        {
+          $query = "SELECT * FROM tb_projek 
+                    INNER JOIN auth ON tb_projek.id_auth = auth.id_auth
+                    INNER JOIN jenis_projek ON tb_projek.id_jenis = jenis_projek.id_jenis WHERE tanggal_akhir = '0000-00-00' AND tb_projek.id_auth = $id_auth";
+        }
+        else if($group=='1')
+        {
+          $query = "SELECT * FROM tb_projek 
+                    INNER JOIN auth ON tb_projek.id_auth = auth.id_auth
+                    INNER JOIN jenis_projek ON tb_projek.id_jenis = jenis_projek.id_jenis WHERE tanggal_akhir = '0000-00-00' AND id_projek in(select tb_detail.id_projek FROM tb_detail WHERE tb_detail.id_auth = $id_auth group by tb_detail.id_projek)";
+        }
+        $this->db->query($query);
+        return $this->db->resultSet(); 
     }
-    else if($group=='2')
-    {
-      $query = "SELECT * FROM tb_projek 
-                INNER JOIN auth ON tb_projek.id_auth = auth.id_auth
-                INNER JOIN jenis_projek ON tb_projek.id_jenis = jenis_projek.id_jenis WHERE tanggal_akhir = '0000-00-00' AND tb_projek.id_auth = $id_auth";
-    }
-    else if($group=='1')
-    {
-      $query = "SELECT * FROM tb_projek 
-                INNER JOIN auth ON tb_projek.id_auth = auth.id_auth
-                INNER JOIN jenis_projek ON tb_projek.id_jenis = jenis_projek.id_jenis WHERE tanggal_akhir = '0000-00-00' ";
-    }
-    $this->db->query($query);
-    return $this->db->resultSet(); 
+    
   }
 
-   public function ambilDetailselesai()
+  public function ambilDetailselesai()
   {
+    $id_auth = $_SESSION['auth'];
     $query = "SELECT * FROM tb_projek 
               INNER JOIN auth ON tb_projek.id_auth = auth.id_auth
-              INNER JOIN jenis_projek ON tb_projek.id_jenis = jenis_projek.id_jenis WHERE tanggal_akhir != 0000-00-00 ";
+              INNER JOIN jenis_projek ON tb_projek.id_jenis = jenis_projek.id_jenis WHERE tanggal_akhir != 0000-00-00";
+    $this->db->query($query);
+    return $this->db->resultSet();
+  }
+
+  public function ambilDetailselesaiL()
+  {
+    $id_auth = $_SESSION['auth'];
+    $query = "SELECT * FROM tb_projek 
+              INNER JOIN auth ON tb_projek.id_auth = auth.id_auth
+              INNER JOIN jenis_projek ON tb_projek.id_jenis = jenis_projek.id_jenis WHERE tanggal_akhir != 0000-00-00  AND tb_projek.id_auth = $id_auth ";
     $this->db->query($query);
     return $this->db->resultSet();
   }
 
   public function ambilallLeader()
   {
-    $query = "SELECT * FROM auth WHERE id_level = 2";
+    $query = "SELECT * FROM auth WHERE id_level = 2 ";
+    $this->db->query($query);
+    return $this->db->resultSet();
+  }
+
+  public function ambilMenuLeader()
+  {
+    $id_auth = $_SESSION['auth'];
+    $query = "SELECT * FROM auth WHERE id_level = 2 AND auth.id_auth = $id_auth";
     $this->db->query($query);
     return $this->db->resultSet();
   }
@@ -112,14 +134,34 @@ class Get_models
     $this->db->query($query);
     return $this->db->resultSet();
   }
-
-  public function ambilLaporan()
+   public function ambilLaporan()
   {
-    $query = "SELECT * FROM tb_laporan
-              INNER JOIN auth ON tb_laporan.id_auth =  auth.id_auth
-              INNER JOIN jenis_projek ON tb_laporan.id_jenis =  jenis_projek.id_jenis";
-    $this->db->query($query);
-    return $this->db->resultSet();
+     
+    if (isset($_SESSION['auth'])) {
+        $id_auth = $_SESSION['auth'];
+        $query = "SELECT * FROM tb_laporan
+                  INNER JOIN auth ON tb_laporan.id_auth =  auth.id_auth
+                  INNER JOIN jenis_projek ON tb_laporan.id_jenis =  jenis_projek.id_jenis";
+        $this->db->query($query);
+        return $this->db->resultSet();
+      }else {
+        header('Location: '.BASEURL.'/auth/login');
+      }
+  }
+
+  public function ambilLaporanL()
+  {
+     
+     if (isset($_SESSION['auth'])) {
+       $id_auth = $_SESSION['auth'];
+        $query = "SELECT * FROM tb_laporan
+                  INNER JOIN auth ON tb_laporan.id_auth =  auth.id_auth
+                  INNER JOIN jenis_projek ON tb_laporan.id_jenis =  jenis_projek.id_jenis WHERE tb_laporan.id_auth = $id_auth";
+        $this->db->query($query);
+        return $this->db->resultSet();
+      }else {
+        header('Location: '.BASEURL.'/auth/login');
+      }
   }
 
   public function editLaporan($id)
@@ -133,9 +175,28 @@ class Get_models
   /*-------------------------- AMBIL USER MEMBER ----------------------*/
   public function ambilUserMember()
   {
-    $query = "SELECT * FROM auth WHERE id_level = 1";
-    $this->db->query($query);
-    return $this->db->resultSet();
+   
+    if (isset($_SESSION['auth'])) {
+        $id_auth = $_SESSION['auth'];
+        $query = "SELECT * FROM auth WHERE id_level = 1 ";
+        $this->db->query($query);
+        return $this->db->resultSet();
+      }else {
+        header('Location: '.BASEURL.'/auth/login');
+      }
+  }
+
+  public function ambilUserMemberU()
+  {
+    
+      if (isset($_SESSION['auth'])) {
+        $id_auth = $_SESSION['auth'];
+        $query = "SELECT * FROM auth WHERE id_level = 1 AND id_auth = $id_auth";
+        $this->db->query($query);
+        return $this->db->resultSet();
+      }else {
+        header('Location: '.BASEURL.'/auth/login');
+      }
   }
 
   public function ambilMemberbyid($id)
@@ -146,11 +207,26 @@ class Get_models
     return $this->db->resultSet();
   }
 
+  public function ambilJenisProjekadmin()
+  {
+      $query = "SELECT * FROM jenis_projek";
+      $this->db->query($query);
+      return $this->db->resultSet();
+  }
+
   public function ambilJenisProjek()
   {
-    $query = "SELECT * FROM jenis_projek";
-    $this->db->query($query);
-    return $this->db->resultSet();
+    if (isset($_SESSION['auth'])) {
+      $id_auth = $_SESSION['auth'];
+      $query = "SELECT * FROM tb_projek 
+                  INNER JOIN auth ON tb_projek.id_auth = auth.id_auth
+                  INNER JOIN jenis_projek ON tb_projek.id_jenis = jenis_projek.id_jenis WHERE tanggal_akhir = '0000-00-00' AND id_projek in(select tb_detail.id_projek FROM tb_detail WHERE tb_detail.id_auth = $id_auth group by tb_detail.id_projek)";
+      $this->db->query($query);
+      return $this->db->resultSet();
+    }else {
+      header('Location: '.BASEURL.'/auth/login');
+    }
+     
   }
 
   public function ambilProjekbyid($id)
@@ -167,11 +243,30 @@ class Get_models
     return $this->db->resultarray();
   }
 
+  public function totalCountprojekL()
+  {
+    if (isset($_SESSION['auth'])) {
+      $id_auth = $_SESSION['auth'];
+      $query = "SELECT COUNT(*) FROM tb_projek WHERE tanggal_akhir = 0000-00-00 AND id_auth = $id_auth ";
+      $this->db->query($query);
+      return $this->db->resultarray();
+    }else {
+      header('Location: '.BASEURL.'/auth/login');
+    }
+  }
+
   public function totalCountprojek()
   {
-    $query = "SELECT COUNT(*) FROM tb_projek WHERE tanggal_akhir = 0000-00-00";
-    $this->db->query($query);
-    return $this->db->resultarray();
+    if ($_SESSION['auth']) {
+      $id_auth = $_SESSION['auth'];
+      $query = "SELECT COUNT(*) FROM tb_projek WHERE tanggal_akhir = 0000-00-00";
+      $this->db->query($query);
+      return $this->db->resultarray();
+    }
+    else {
+      header('Location: '.BASEURL.'/auth/login');
+    }
+    
   }
 
   public function totalCountselesai()
@@ -179,6 +274,20 @@ class Get_models
     $query = "SELECT COUNT(*) FROM tb_projek WHERE tanggal_akhir != 0000-00-00";
     $this->db->query($query);
     return $this->db->resultarray();
+  }
+
+  public function totalCountselesaiL()
+  {
+    if ($_SESSION['auth']) {
+      $id_auth = $_SESSION['auth'];
+      $query = "SELECT COUNT(*) FROM tb_projek WHERE tanggal_akhir != 0000-00-00 AND id_auth = $id_auth";
+      $this->db->query($query);
+      return $this->db->resultarray();
+    }
+    else {
+      header('Location: '.BASEURL.'/auth/login');
+    }
+   
   }
 
   public function totalCountLp()
